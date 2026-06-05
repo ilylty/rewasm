@@ -66,8 +66,8 @@ jobs:
         run: |
           ASSET="rewasm-${{ matrix.target }}${{ matrix.ext }}"
           cp "target/${{ matrix.target }}/release/rewasm${{ matrix.ext }}" "$ASSET"
-          if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            7z a -tzip "rewasm-${{ matrix.target }}.zip" "$ASSET"
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            zip "rewasm-${{ matrix.target }}.zip" "$ASSET"
           else
             tar czf "rewasm-${{ matrix.target }}.tar.gz" "$ASSET"
           fi
